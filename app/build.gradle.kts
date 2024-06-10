@@ -34,6 +34,9 @@ android {
 
 dependencies {
 
+    implementation(project(":core:common"))
+    implementation(project(":core:designsystem"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -68,6 +71,8 @@ dependencies {
 
     // Detekt
     detektPlugins(libs.detekt.formatting)
+
+    implementation(libs.lottie)
 }
 
 kapt {

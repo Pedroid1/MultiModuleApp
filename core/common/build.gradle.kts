@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.pedroid.common"
+    namespace = "com.pedroid.core.common"
 
     buildFeatures {
         dataBinding = true
