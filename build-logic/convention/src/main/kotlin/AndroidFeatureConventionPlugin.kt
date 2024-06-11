@@ -13,7 +13,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             pluginManager.apply {
                 apply("project.android.library")
                 apply("project.android.hilt")
-                apply("androidx.navigation.safeargs.kotlin")
+                apply("project.android.navigation")
             }
             extensions.configure<LibraryExtension> {
                 defaultConfig {
@@ -28,15 +28,10 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtime.ktx").get())
                 add("kapt", libs.findLibrary("androidx.lifecycle.compiler").get())
 
-                add("implementation", libs.findLibrary("androidx.navigation.fragment.ktx").get())
-                add("implementation", libs.findLibrary("androidx.navigation.ui.ktx").get())
-
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
 
                 add("testImplementation", kotlin("test"))
                 add("androidTestImplementation", kotlin("test"))
-                add("androidTestImplementation", libs.findLibrary("androidx.navigation.testing").get()
-                )
             }
         }
     }

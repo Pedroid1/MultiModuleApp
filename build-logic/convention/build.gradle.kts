@@ -40,6 +40,10 @@ gradlePlugin {
             id = "project.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("androidNavigationComponent") {
+            id = "project.android.navigation"
+            implementationClass = "AndroidNavigationComponentConventionPlugin"
+        }
         register("jvmLibrary") {
             id = "project.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
