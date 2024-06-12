@@ -1,12 +1,11 @@
-package com.pedroid.data.repository.impl
+package com.pedroid.data.repositories.preferences
 
 import android.content.Context
 import com.pedroid.common.util.Constants
-import com.pedroid.data.repository.PrefsRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class AppPreferencesRepository @Inject constructor(
+class AppPreferencesRepositoryImpl @Inject constructor(
     @ApplicationContext context: Context
 ) : PrefsRepository {
 

@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
-import com.pedroid.data.repository.PrefsRepository
 import com.pedroid.feature.onboarding.R
 import com.pedroid.feature.onboarding.databinding.FragmentFirstScreenBinding
-import dagger.hilt.android.AndroidEntryPoint
 
 class FirstScreenFragment : Fragment() {
 

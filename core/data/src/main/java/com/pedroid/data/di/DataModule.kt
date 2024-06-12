@@ -1,7 +1,9 @@
 package com.pedroid.data.di
 
 import android.content.Context
-import com.pedroid.data.repository.impl.AppPreferencesRepository
+import androidx.room.Room
+import com.pedroid.data.local.TasksDatabase
+import com.pedroid.data.repositories.preferences.AppPreferencesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +17,17 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun providePrefsRepository(
+    fun providesPrefsRepository(
         @ApplicationContext context: Context
-    ) = AppPreferencesRepository(context)
+    ) = AppPreferencesRepositoryImpl(context)
+
+    @Provides
+    @Singleton
+    fun providesTasksDatabase(
+        @ApplicationContext context: Context
+    ): TasksDatabase = Room.databaseBuilder(
+        context,
+        TasksDatabase::class.java,
+        "tasks-database"
+    ).build()
 }

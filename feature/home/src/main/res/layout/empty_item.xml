@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.pedroid.home.fragment.adapter.HomeAdapterEvent" />
+
+        <variable
+            name="eventListener"
+            type="HomeAdapterEvent" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/layout_margin"
+        android:background="@drawable/task_item_radius"
+        android:backgroundTint="?attr/colorOnPrimary"
+        android:minHeight="80dp"
+        android:onClick="@{(view) -> eventListener.addTask()}">
+
+        <ImageView
+            android:id="@+id/plus_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/plus_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.pedroid.designsystem.component.CustomTextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/tap_to_add_task"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/detail"
+            app:layout_constraintStart_toEndOf="@id/plus_img"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:textPriority="primary"
+            app:textType="title3" />
+
+        <LinearLayout
+            android:id="@+id/detail"
+            android:layout_width="25dp"
+            android:layout_height="0dp"
+            android:background="@drawable/task_item_radius_detail"
+            android:backgroundTint="?attr/colorPrimary"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

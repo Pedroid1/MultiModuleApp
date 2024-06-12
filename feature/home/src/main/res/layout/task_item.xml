@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.pedroid.domain.model.Task" />
+
+        <import type="com.pedroid.home.fragment.adapter.HomeAdapterEvent" />
+
+        <variable
+            name="task"
+            type="Task" />
+
+        <variable
+            name="eventListener"
+            type="HomeAdapterEvent" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/layout_margin"
+        android:layout_marginBottom="@dimen/layout_margin"
+        android:background="@drawable/task_item_radius"
+        android:backgroundTint="?attr/colorOnPrimary"
+        android:minHeight="80dp">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:checked="@{task.checked}"
+            android:onClick="@{(view) -> eventListener.toggleChecked(task)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.pedroid.designsystem.component.CustomTextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="20dp"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:maxLines="1"
+            android:text="@{task.title}"
+            app:layout_constraintBottom_toTopOf="@id/description"
+            app:layout_constraintEnd_toStartOf="@id/detail"
+            app:layout_constraintStart_toEndOf="@id/checkbox"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:textPriority="primary"
+            app:textType="title2"
+            tools:text="Fazer compras na feira do mercadão" />
+
+        <com.pedroid.designsystem.component.CustomTextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="@{task.description}"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/detail"
+            app:layout_constraintStart_toStartOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="Descriptionnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" />
+
+        <LinearLayout
+            android:id="@+id/detail"
+            android:layout_width="25dp"
+            android:layout_height="0dp"
+            android:background="@drawable/task_item_radius_detail"
+            android:backgroundTint="?attr/colorPrimary"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

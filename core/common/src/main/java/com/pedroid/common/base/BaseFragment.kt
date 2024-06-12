@@ -26,9 +26,12 @@ abstract class BaseFragment<VDB : ViewDataBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initialWork()
         setupViewModel()
         setupObservers()
     }
+
+    abstract fun initialWork()
 
     abstract fun setupViewModel()
 

@@ -14,5 +14,12 @@
             <enum name="caption" value="8" />
             <enum name="overline" value="9" />
         </attr>
+
+        <attr name="textPriority" format="enum" >
+            <enum name="primary" value="0" />
+            <enum name="secondary" value="1" />
+            <enum name="tertiary" value="2" />
+        </attr>
     </declare-styleable>
+
 </resources>

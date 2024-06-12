@@ -6,16 +6,35 @@ import android.util.TypedValue
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
+import com.google.android.material.color.MaterialColors
 import com.pedroid.core.designsystem.R
 
 class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTextView)
-        val textTypeIndex = typedArray.getInt(R.styleable.CustomTextView_textType, EnumTextType.BODY1.ordinal)
+        val textTypeIndex =
+            typedArray.getInt(R.styleable.CustomTextView_textType, EnumTextType.BODY1.ordinal)
         setTextType(EnumTextType.getTextType(textTypeIndex))
         setupTitleAccessibility(typedArray.getBoolean(R.styleable.CustomTextView_isTitle, false))
+        setupPriorityText(
+            EnumTextViewPriority.getTextPriority(
+                typedArray.getInt(
+                    R.styleable.CustomTextView_textPriority,
+                    EnumTextViewPriority.SECONDARY.ordinal
+                )
+            )
+        )
         typedArray.recycle()
         letterSpacing = 0.05f
+    }
+
+    private fun setupPriorityText(textPriority: EnumTextViewPriority) {
+        val colorResId = when (textPriority) {
+            EnumTextViewPriority.PRIMARY -> com.google.android.material.R.attr.colorOnBackground
+            EnumTextViewPriority.SECONDARY -> null // Secondary is default text color
+            EnumTextViewPriority.TERTIARY -> com.google.android.material.R.attr.colorOnSurfaceVariant
+        }
+        colorResId?.let { setTextColor(MaterialColors.getColor(this, colorResId)) }
     }
 
     private fun setupTitleAccessibility(isTitle: Boolean) {
@@ -63,6 +82,18 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
             @JvmStatic
             fun getTextType(index: Int): EnumTextType {
                 return entries.toTypedArray().getOrElse(index) { BODY1 }
+            }
+        }
+    }
+
+    enum class EnumTextViewPriority {
+        PRIMARY,
+        SECONDARY,
+        TERTIARY;
+
+        companion object {
+            fun getTextPriority(index: Int): EnumTextViewPriority {
+                return entries[index]
             }
         }
     }
