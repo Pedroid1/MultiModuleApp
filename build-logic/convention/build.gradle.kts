@@ -44,6 +44,10 @@ gradlePlugin {
             id = "project.android.navigation"
             implementationClass = "AndroidNavigationComponentConventionPlugin"
         }
+        register("androidRoom") {
+            id = "project.android.room"
+            implementationClass = "AndroidRoomConventionPlugin"
+        }
         register("jvmLibrary") {
             id = "project.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"

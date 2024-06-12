@@ -5,8 +5,10 @@ import com.pedroid.modularizationpluginsetup.configureKotlinAndroid
 import com.pedroid.modularizationpluginsetup.disableUnnecessaryAndroidTests
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.kotlin
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
@@ -24,8 +26,9 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryAndroidComponentsExtension> {
                 disableUnnecessaryAndroidTests(target)
             }
+            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
-                add("testImplementation", kotlin("test"))
+                add("testImplementation", libs.findLibrary("junit4").get())
             }
         }
     }

@@ -3,6 +3,7 @@ import com.pedroid.modularizationpluginsetup.ProjectBuildType
 plugins {
     alias(libs.plugins.project.android.application)
     alias(libs.plugins.project.android.hilt)
+    alias(libs.plugins.project.android.navigation)
     alias(libs.plugins.project.kotlin.detekt)
 }
 
@@ -73,6 +74,12 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
 
     implementation(libs.lottie)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    testImplementation(libs.androidx.room.testing)
 }
 
 kapt {
