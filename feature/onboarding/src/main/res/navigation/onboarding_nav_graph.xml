@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/firstScreenFragment"
+        android:name="com.pedroid.onboarding.fragments.FirstScreenFragment"
+        android:label="FirstScreenFragment" />
+    <fragment
+        android:id="@+id/secondScreenFragment"
+        android:name="com.pedroid.onboarding.fragments.SecondScreenFragment"
+        android:label="SecondScreenFragment" />
+    <fragment
+        android:id="@+id/thirdScreenFragment"
+        android:name="com.pedroid.onboarding.fragments.ThirdScreenFragment"
+        android:label="fragment_third_screen"
+        tools:layout="@layout/fragment_third_screen" />
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.pedroid.onboarding.fragments.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.pedroid.onboarding.fragments.SplashScreenFragment"
+        android:label="SplashScreenFragment" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+    </fragment>
+</navigation>
