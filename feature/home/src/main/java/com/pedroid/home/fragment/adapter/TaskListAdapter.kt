@@ -34,9 +34,7 @@ class TaskListAdapter(private val eventListener: HomeAdapterEvent) :
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) = when (holder) {
         is TaskViewHolder.TaskItem -> {
             holder.bind(
-                getItem(position) as TaskListAdapterItem.TaskItem,
-
-                )
+                getItem(position) as TaskListAdapterItem.TaskItem)
         }
 
         is TaskViewHolder.EmptyItem -> {

@@ -17,11 +17,16 @@
         android:id="@+id/addTaskDialogFragment"
         android:name="com.pedroid.home.fragment.AddTaskDialogFragment"
         android:label="fragment_add_task_dialog_list_dialog"
-        tools:layout="@layout/fragment_add_task_dialog_list_dialog" >
+        tools:layout="@layout/fragment_add_task_dialog_list_dialog">
         <action
             android:id="@+id/action_addTaskDialogFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment"
             app:popUpTo="@id/addTaskDialogFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="task"
+            app:argType="com.pedroid.domain.model.Task"
+            android:defaultValue="@null"
+            app:nullable="true" />
     </dialog>
 </navigation>
