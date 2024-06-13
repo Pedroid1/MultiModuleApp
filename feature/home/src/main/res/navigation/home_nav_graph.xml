@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.pedroid.home.fragment.HomeScreenFragment"
+        android:label="HomeScreenFragment" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_addTaskDialogFragment"
+            app:destination="@id/addTaskDialogFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_taskDetailDialogFragment"
+            app:destination="@id/taskDetailDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addTaskDialogFragment"
+        android:name="com.pedroid.home.fragment.AddTaskDialogFragment"
+        android:label="fragment_add_task_dialog_list_dialog"
+        tools:layout="@layout/fragment_add_task_dialog_list_dialog">
+        <action
+            android:id="@+id/action_addTaskDialogFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment"
+            app:popUpTo="@id/homeScreenFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="task"
+            app:argType="com.pedroid.domain.model.Task"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </dialog>
+    <dialog
+        android:id="@+id/taskDetailDialogFragment"
+        android:name="com.pedroid.home.fragment.TaskDetailDialogFragment"
+        android:label="TaskDetailDialogFragment" >
+        <argument
+            android:name="task"
+            app:argType="com.pedroid.domain.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </dialog>
+</navigation>

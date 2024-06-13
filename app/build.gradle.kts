@@ -3,6 +3,7 @@ import com.pedroid.modularizationpluginsetup.ProjectBuildType
 plugins {
     alias(libs.plugins.project.android.application)
     alias(libs.plugins.project.android.hilt)
+    alias(libs.plugins.project.android.navigation)
     alias(libs.plugins.project.kotlin.detekt)
 }
 
@@ -30,9 +31,18 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+    implementation(project(":core:common"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":feature:onboarding"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -68,6 +78,14 @@ dependencies {
 
     // Detekt
     detektPlugins(libs.detekt.formatting)
+
+    implementation(libs.lottie)
+
+    // Room
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    testImplementation(libs.androidx.room.testing)
 }
 
 kapt {

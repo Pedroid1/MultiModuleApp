@@ -22,3 +22,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "ModularizationPluginSetup"
 include(":app")
+include(":core")
+include(":core:common")
+include(":core:designsystem")
+include(":feature")
+include(":feature:onboarding")
+include(":core:data")
+include(":feature:home")
+include(":core:domain")

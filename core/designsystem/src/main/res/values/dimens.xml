@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- All Screens -->
+    <dimen name="layout_margin">20dp</dimen>
+
+    <!-- Some dimens -->
+    <dimen name="spacing_2">2dp</dimen>
+    <dimen name="spacing_3">3dp</dimen>
+    <dimen name="spacing_4">4dp</dimen>
+    <dimen name="spacing_5">5dp</dimen>
+    <dimen name="spacing_6">6dp</dimen>
+    <dimen name="spacing_7">7dp</dimen>
+    <dimen name="spacing_8">8dp</dimen>
+    <dimen name="spacing_9">9dp</dimen>
+    <dimen name="spacing_10">10dp</dimen>
+    <dimen name="spacing_11">11dp</dimen>
+    <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_13">13dp</dimen>
+    <dimen name="spacing_14">14dp</dimen>
+    <dimen name="spacing_15">15dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_17">17dp</dimen>
+    <dimen name="spacing_18">18dp</dimen>
+    <dimen name="spacing_19">19dp</dimen>
+    <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_21">21dp</dimen>
+    <dimen name="spacing_22">22dp</dimen>
+    <dimen name="spacing_23">23dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_25">25dp</dimen>
+    <dimen name="spacing_26">26dp</dimen>
+    <dimen name="spacing_27">27dp</dimen>
+    <dimen name="spacing_28">28dp</dimen>
+    <dimen name="spacing_29">29dp</dimen>
+    <dimen name="spacing_30">30dp</dimen>
+    <dimen name="spacing_31">31dp</dimen>
+    <dimen name="spacing_32">32dp</dimen>
+    <dimen name="spacing_33">33dp</dimen>
+    <dimen name="spacing_34">34dp</dimen>
+    <dimen name="spacing_35">35dp</dimen>
+    <dimen name="spacing_36">36dp</dimen>
+    <dimen name="spacing_37">37dp</dimen>
+    <dimen name="spacing_38">38dp</dimen>
+    <dimen name="spacing_39">39dp</dimen>
+    <dimen name="spacing_40">40dp</dimen>
+    <dimen name="spacing_41">41dp</dimen>
+    <dimen name="spacing_42">42dp</dimen>
+    <dimen name="spacing_43">43dp</dimen>
+    <dimen name="spacing_44">44dp</dimen>
+    <dimen name="spacing_45">45dp</dimen>
+    <dimen name="spacing_46">46dp</dimen>
+    <dimen name="spacing_47">47dp</dimen>
+    <dimen name="spacing_48">48dp</dimen>
+    <dimen name="spacing_49">49dp</dimen>
+    <dimen name="spacing_50">50dp</dimen>
+    <dimen name="spacing_80">80dp</dimen>
+
+
+</resources>

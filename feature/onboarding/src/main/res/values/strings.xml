@@ -1,0 +1,16 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="onboarding_subtitle">A sua melhor escolha para manter a vida mais organizada</string>
+    <string name="onboarding_title">ToDo App</string>
+    <string name="logotipo">Logotipo</string>
+    <string name="onboarding_first_screen_title">Planeje o que fazer \nde onde estiver</string>
+    <string name="onboarding_first_screen_subtitle">Planeje suas tarefas de qualquer lugar. Nossa ferramenta permite que você mantenha sua vida em ordem, onde quer que vá.</string>
+    <string name="next">Próximo</string>
+    <string name="onboarding_second_screen_title">Economize tempo planejando</string>
+    <string name="onboarding_second_screen_subtitle">Você a economizar tempo com um planejamento simples e eficaz. Menos tempo organizando, mais tempo realizando suas tarefas.</string>
+    <string name="previus">Voltar</string>
+    <string name="onboarding_third_screen_subtitle">Nosso app é a ferramenta perfeita para ajudar você a planejar suas tarefas diárias, manter o foco e alcançar suas metas, você estará sempre no controle do seu tempo.</string>
+    <string name="onboarding_third_screen_title">Organize seu dia, alcance seus objetivos!</string>
+    <string name="go_to_app">Ir para o app</string>
+</resources>
