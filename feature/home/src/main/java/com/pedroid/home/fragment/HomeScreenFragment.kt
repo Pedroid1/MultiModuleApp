@@ -29,9 +29,8 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
         }
     }
 
-    private fun showAddTaskBottomSheet() {
-        val action =
-            HomeScreenFragmentDirections.actionHomeScreenFragmentToAddTaskDialogFragment()
+    private fun showAddTaskBottomSheet(task: Task? = null) {
+        val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToAddTaskDialogFragment(task)
         findNavController().navigate(action)
     }
 
@@ -52,12 +51,21 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
     }
 
     override fun editTask(task: Task) {
-        // TODO Open EditTaskScreen
+        showAddTaskBottomSheet(task)
     }
 
     override fun toggleChecked(task: Task) {
         val checked = !task.isChecked
-        viewModel.insertTask(task.copy(isChecked = checked))
+        viewModel.toggleIsChecked(task.copy(isChecked = checked))
+    }
+
+    override fun detail(task: Task) {
+        showDetailBottomSheet(task)
+    }
+
+    private fun showDetailBottomSheet(task: Task) {
+        val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToTaskDetailDialogFragment(task)
+        findNavController().navigate(action)
     }
 
     private val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(

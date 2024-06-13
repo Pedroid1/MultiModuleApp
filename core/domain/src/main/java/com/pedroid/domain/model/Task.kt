@@ -1,13 +1,14 @@
 package com.pedroid.domain.model
 
 import com.pedroid.data.model.TaskEntity
+import java.io.Serializable
 
 data class Task(
     val uid: Int? = null,
     val title: String,
     val description: String? = null,
     val isChecked: Boolean = false
-)
+): Serializable
 
 fun Task.toEntity() = TaskEntity(uid, title, description, isChecked)
 

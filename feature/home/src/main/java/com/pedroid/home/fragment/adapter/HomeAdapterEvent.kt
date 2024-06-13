@@ -9,4 +9,6 @@ interface HomeAdapterEvent {
     fun editTask(task: Task)
 
     fun toggleChecked(task: Task)
+
+    fun detail(task: Task)
 }

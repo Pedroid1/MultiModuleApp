@@ -10,4 +10,6 @@
     <string name="whats_your_next_task">Qual é a sua próxima atividade?</string>
     <string name="info_notes">Informações adicionais...</string>
     <string name="add">Adicionar</string>
+    <string name="save">Salvar</string>
+    <string name="edit">Editar</string>
 </resources>

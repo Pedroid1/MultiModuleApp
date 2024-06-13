@@ -39,17 +39,17 @@ class HomeViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun insertTask(title: String, description: String) {
-        val result = validationUseCase.validateTitle(title)
+    fun insertTask(task: Task) {
+        val result = validationUseCase.validateTitle(task.title)
         if (result.successful) {
-            useCase.insertTask(Task(title = title, description = description))
+            useCase.insertTask(task)
             _insertResultLiveData.value = Event(true)
         } else {
             _validationLiveData.value = Event(result)
         }
     }
 
-    fun insertTask(task: Task) {
+    fun toggleIsChecked(task: Task) {
         useCase.insertTask(task)
     }
 
