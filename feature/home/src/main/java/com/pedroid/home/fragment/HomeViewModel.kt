@@ -49,12 +49,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun toggleChecked(task: Task) {
+    fun insertTask(task: Task) {
         useCase.insertTask(task)
     }
 
     fun deleteTask(task: Task) {
-        useCase.insertTask(task)
+        useCase.deleteTask(task)
     }
 
     fun generateHomeAdapterList(list: List<Task>): List<TaskListAdapterItem> {

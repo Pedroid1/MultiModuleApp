@@ -2,11 +2,14 @@ package com.pedroid.home.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.pedroid.common.base.BaseFragment
 import com.pedroid.domain.model.Task
 import com.pedroid.feature.home.R
 import com.pedroid.feature.home.databinding.FragmentHomeScreenBinding
+import com.pedroid.home.fragment.adapter.EnumTaskListAdapterViewType
 import com.pedroid.home.fragment.adapter.HomeAdapterEvent
 import com.pedroid.home.fragment.adapter.TaskListAdapter
 import com.pedroid.home.fragment.adapter.TaskListAdapterItem
@@ -19,11 +22,17 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
 
     override fun initialWork() {
         _binding.taskRecyclerView.adapter = homeAdapter
+        ItemTouchHelper(itemTouchCallback).attachToRecyclerView(_binding.taskRecyclerView)
 
         _binding.floatingBtn.setOnClickListener {
-            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToAddTaskDialogFragment()
-            findNavController().navigate(action)
+            showAddTaskBottomSheet()
         }
+    }
+
+    private fun showAddTaskBottomSheet() {
+        val action =
+            HomeScreenFragmentDirections.actionHomeScreenFragmentToAddTaskDialogFragment()
+        findNavController().navigate(action)
     }
 
     override fun setupViewModel() {
@@ -39,6 +48,7 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
     }
 
     override fun addTask() {
+        showAddTaskBottomSheet()
     }
 
     override fun editTask(task: Task) {
@@ -47,6 +57,43 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
 
     override fun toggleChecked(task: Task) {
         val checked = !task.isChecked
-        viewModel.toggleChecked(task.copy(isChecked = checked))
+        viewModel.insertTask(task.copy(isChecked = checked))
+    }
+
+    private val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(
+        0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+    ) {
+
+        override fun getMovementFlags(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder
+        ): Int {
+            return when (EnumTaskListAdapterViewType.getEnumByOrdinal(viewHolder.itemViewType)) {
+                EnumTaskListAdapterViewType.TASK -> {
+                    val swipeFlags = ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+                    makeMovementFlags(0, swipeFlags)
+                }
+
+                else -> makeMovementFlags(0, 0)
+            }
+        }
+
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ) = true
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            val pos = viewHolder.layoutPosition
+            val item = (homeAdapter.currentList[pos] as TaskListAdapterItem.TaskItem).task
+            viewModel.deleteTask(item)
+            Snackbar.make(requireView(), "Tarefa deletada", Snackbar.LENGTH_LONG).apply {
+                setAction("Desfazer") {
+                    viewModel.insertTask(item)
+                }
+                show()
+            }
+        }
     }
 }
