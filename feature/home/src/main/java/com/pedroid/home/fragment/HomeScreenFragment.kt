@@ -1,6 +1,8 @@
 package com.pedroid.home.fragment
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.pedroid.common.base.BaseFragment
 import com.pedroid.domain.model.Task
 import com.pedroid.feature.home.R
@@ -19,8 +21,8 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
         _binding.taskRecyclerView.adapter = homeAdapter
 
         _binding.floatingBtn.setOnClickListener {
-            // TODO Open AddTaskScreen
-            viewModel.insertTask(Task(title = "Teste", description = "Fazer compras de verdura"))
+            val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToAddTaskDialogFragment()
+            findNavController().navigate(action)
         }
     }
 
@@ -37,8 +39,6 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
     }
 
     override fun addTask() {
-        // TODO Open AddTaskScreen
-        viewModel.insertTask(Task(title = "Teste", description = "Fazer compras de verdura"))
     }
 
     override fun editTask(task: Task) {
@@ -47,6 +47,6 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
 
     override fun toggleChecked(task: Task) {
         val checked = !task.isChecked
-        viewModel.insertTask(task.copy(isChecked = checked))
+        viewModel.toggleChecked(task.copy(isChecked = checked))
     }
 }

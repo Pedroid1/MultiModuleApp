@@ -1,4 +1,4 @@
-package com.pedroid.common
+package com.pedroid.common.data
 
 import androidx.lifecycle.MutableLiveData
 import com.pedroid.common.base.BaseState

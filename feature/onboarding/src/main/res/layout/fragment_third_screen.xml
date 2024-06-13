@@ -50,6 +50,7 @@
             android:layout_marginTop="120dp"
             android:gravity="center"
             android:text="@string/onboarding_third_screen_title"
+            app:textPriority="primary"
             app:layout_constraintBottom_toBottomOf="@id/gradient"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

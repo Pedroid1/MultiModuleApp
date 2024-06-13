@@ -1,5 +1,6 @@
 package com.pedroid.domain.tasks
 
+import com.pedroid.data.model.TaskEntity
 import com.pedroid.data.repositories.tasks.TasksRepository
 import com.pedroid.domain.model.Task
 import com.pedroid.domain.model.toEntity
@@ -20,6 +21,12 @@ class GetTasksUseCaseImpl @Inject constructor(
     }
 
     override fun getTasks(): Flow<List<Task>> = repository.getTasks().map { list ->
-        list.sortedBy { it.isChecked }.map { it.toModel() }
+        list.sortedWith(compareBy<TaskEntity> {
+            it.isChecked
+        }.thenBy {
+            it.title.lowercase()
+        }).map {
+            it.toModel()
+        }
     }
 }

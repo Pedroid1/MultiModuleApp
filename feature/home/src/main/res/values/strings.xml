@@ -6,4 +6,8 @@
     <string name="have_a_good_day">Tenha um dia produtivo!</string>
     <string name="your_tasks">Suas tarefas:</string>
     <string name="new_task">Nova tarefa</string>
+    <string name="create_new_task">Criar uma nova tarefa</string>
+    <string name="whats_your_next_task">Qual é a sua próxima atividade?</string>
+    <string name="info_notes">Informações adicionais...</string>
+    <string name="add">Adicionar</string>
 </resources>

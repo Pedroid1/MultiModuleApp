@@ -1,4 +1,4 @@
-package com.pedroid.common
+package com.pedroid.common.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
