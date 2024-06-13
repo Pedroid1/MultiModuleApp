@@ -1,7 +1,6 @@
 package com.pedroid.home.fragment
 
 import android.os.Bundle
-import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import android.view.LayoutInflater
 import android.view.View
@@ -79,11 +78,11 @@ class AddTaskDialogFragment : BottomSheetDialogFragment() {
             task?.let {
                 val taskCopy = it.copy(title = title, description = description)
                 if(task != taskCopy) {
-                    viewModel.insertTask(taskCopy)
+                    viewModel.insertTaskWithFieldsValidation(taskCopy)
                 } else {
                     navigateToHomeScreen()
                 }
-            } ?: viewModel.insertTask(Task(title = title, description = description))
+            } ?: viewModel.insertTaskWithFieldsValidation(Task(title = title, description = description))
         }
     }
 }
