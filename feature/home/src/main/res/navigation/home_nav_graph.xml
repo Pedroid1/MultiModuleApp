@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeScreenFragment_to_addTaskDialogFragment"
             app:destination="@id/addTaskDialogFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_taskDetailDialogFragment"
+            app:destination="@id/taskDetailDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/addTaskDialogFragment"
@@ -28,5 +31,15 @@
             app:argType="com.pedroid.domain.model.Task"
             android:defaultValue="@null"
             app:nullable="true" />
+    </dialog>
+    <dialog
+        android:id="@+id/taskDetailDialogFragment"
+        android:name="com.pedroid.home.fragment.TaskDetailDialogFragment"
+        android:label="TaskDetailDialogFragment" >
+        <argument
+            android:name="task"
+            app:argType="com.pedroid.domain.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </dialog>
 </navigation>

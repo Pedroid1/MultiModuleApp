@@ -59,6 +59,15 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
         viewModel.toggleIsChecked(task.copy(isChecked = checked))
     }
 
+    override fun detail(task: Task) {
+        showDetailBottomSheet(task)
+    }
+
+    private fun showDetailBottomSheet(task: Task) {
+        val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToTaskDetailDialogFragment(task)
+        findNavController().navigate(action)
+    }
+
     private val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(
         0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
     ) {
