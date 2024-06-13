@@ -39,7 +39,7 @@ class HomeViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun insertTask(task: Task) {
+    fun insertTaskWithFieldsValidation(task: Task) {
         val result = validationUseCase.validateTitle(task.title)
         if (result.successful) {
             useCase.insertTask(task)
@@ -49,8 +49,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun toggleIsChecked(task: Task) {
+    fun insertTask(task: Task) {
         useCase.insertTask(task)
+    }
+
+    fun updateTask(task: Task) {
+        useCase.updateTask(task)
     }
 
     fun deleteTask(task: Task) {

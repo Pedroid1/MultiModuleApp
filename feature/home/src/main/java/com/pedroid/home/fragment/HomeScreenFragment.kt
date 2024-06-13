@@ -56,7 +56,7 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
 
     override fun toggleChecked(task: Task) {
         val checked = !task.isChecked
-        viewModel.toggleIsChecked(task.copy(isChecked = checked))
+        viewModel.updateTask(task.copy(isChecked = checked))
     }
 
     override fun detail(task: Task) {

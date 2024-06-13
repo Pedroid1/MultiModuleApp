@@ -20,6 +20,10 @@ class GetTasksUseCaseImpl @Inject constructor(
         repository.deleteTask(task.toEntity())
     }
 
+    override fun updateTask(task: Task) {
+        repository.updateTask(task.toEntity())
+    }
+
     override fun getTasks(): Flow<List<Task>> = repository.getTasks().map { list ->
         list.sortedWith(compareBy<TaskEntity> {
             it.isChecked

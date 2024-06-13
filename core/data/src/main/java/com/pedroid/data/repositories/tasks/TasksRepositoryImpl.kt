@@ -29,4 +29,10 @@ class TasksRepositoryImpl @Inject constructor(
 
     override fun getTasks(): Flow<List<TaskEntity>> =
         tasksDao.getTaskEntities().flowOn(ioDispatcher)
+
+    override fun updateTask(task: TaskEntity) {
+        CoroutineScope(ioDispatcher).launch {
+            tasksDao.insertTask(task)
+        }
+    }
 }
