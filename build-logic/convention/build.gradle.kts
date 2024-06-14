@@ -19,7 +19,6 @@ kotlin {
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
-    compileOnly(libs.detekt.gradlePlugin)
 }
 
 gradlePlugin {
@@ -51,10 +50,6 @@ gradlePlugin {
         register("jvmLibrary") {
             id = "project.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
-        }
-        register("kotlinDetekt") {
-            id = "project.kotlin.detekt"
-            implementationClass = "DetektConventionPlugin"
         }
     }
 }

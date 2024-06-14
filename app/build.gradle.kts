@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.project.android.application)
     alias(libs.plugins.project.android.hilt)
     alias(libs.plugins.project.android.navigation)
-    alias(libs.plugins.project.kotlin.detekt)
 }
 
 android {
@@ -85,9 +84,6 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     androidTestImplementation(libs.androidx.navigation.testing)
-
-    // Detekt
-    detektPlugins(libs.detekt.formatting)
 
     implementation(libs.lottie)
 
