@@ -13,7 +13,4 @@ android {
 
 dependencies {
     implementation(project(":feature:home"))
-
-    testImplementation(libs.androidx.core.testing)
-    testImplementation(libs.kotlinx.coroutines.test)
 }

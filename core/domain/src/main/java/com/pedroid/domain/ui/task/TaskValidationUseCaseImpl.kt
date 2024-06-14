@@ -1,7 +1,7 @@
 package com.pedroid.domain.ui.task
 
 import com.pedroid.common.ui.UiText
-import com.pedroid.domain.R
+import com.pedroid.core.domain.R
 import com.pedroid.domain.ValidationResult
 import javax.inject.Inject
 

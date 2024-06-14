@@ -1,12 +1,8 @@
 package com.pedroid.onboarding.fragments
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
-import com.pedroid.common.util.handleOpt
 import com.pedroid.domain.preferences.AppPreferencesUseCase
-import getOrAwaitValue
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Before
