@@ -37,19 +37,12 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("androidTestImplementation", libs.findLibrary("androidx.junit").get())
                 add("androidTestImplementation", libs.findLibrary("androidx.espresso.core").get())
 
-                add("testImplementation", libs.findLibrary("truth").get())
-                add("androidTestImplementation", libs.findLibrary("truth").get())
-
-                add("testImplementation", libs.findLibrary("mockk").get())
-                add("androidTestImplementation", libs.findLibrary("mockk.android").get())
-
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewmodel.ktx").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.livedata.ktx").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtime.ktx").get())
                 add("kapt", libs.findLibrary("androidx.lifecycle.compiler").get())
 
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
-                add("testImplementation", libs.findLibrary("kotlinx.coroutines.test").get())
             }
         }
     }

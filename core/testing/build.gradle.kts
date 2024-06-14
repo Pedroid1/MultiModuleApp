@@ -10,7 +10,12 @@ android {
 dependencies {
     implementation(project(":core:data"))
 
+    api(libs.truth)
+    api(libs.mockk)
+    api(libs.androidx.core.testing)
+    api(libs.kotlinx.coroutines.test)
+
     implementation(libs.androidx.test.rules)
     implementation(libs.hilt.android.testing)
-    implementation(libs.kotlinx.coroutines.test)
+
 }

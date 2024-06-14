@@ -4,14 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.pedroid.domain"
+    namespace = "com.pedroid.core.domain"
 }
 
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:common"))
-
-    testImplementation(libs.truth)
-    testImplementation(libs.mockk)
-    testImplementation (libs.kotlinx.coroutines.test)
+    implementation(project(":core:testing"))
 }
