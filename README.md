@@ -8,17 +8,23 @@
 
 <p align="center">  
 
-⭐ Muitas pessoas enfrentam dificuldades em organizar suas tarefas diárias, o que pode levar a esquecimentos e perda de prazos importantes. Para resolver isso, propomos um aplicativo "To Do List" simples e prático, que ajuda os usuários a lembrar de suas tarefas de maneira fácil e intuitiva, melhorando a organização pessoal.
+⭐ Muitas pessoas enfrentam dificuldades em organizar suas tarefas diárias, o que pode levar a esquecimentos e perda de prazos importantes. Para resolver isso, propomos um aplicativo "ToDo App" simples e prático, que ajuda os usuários a lembrar de suas tarefas de maneira fácil e intuitiva, melhorando a organização pessoal.
 
-O aplicativo possui duas telas principais:
+### O aplicativo possui duas telas principais:
 - #### Tela de Onboarding
-  - Exibida apenas uma vez para apresentar rapidamente as funcionalidades do aplicativo.
+  - Exibida apenas uma vez para apresentar rapidamente as vantagens de utilizar o app.
  
 - #### Tela Home
   - Onde os usuários podem adicionar, marcar como concluídas, editar e excluir tarefas.
 </p>
-</br>
 
+### Considerações Adicionais
+#### Com mais tempo, adicionaria:
+- Seleção de Data e Hora: Para definir prazos específicos.
+- Níveis de Prioridade: Para focar nas tarefas mais importantes.
+- Categorias de Tarefas: Para agrupar tarefas por áreas da vida.
+- Sistema de Login: Para salvar dados remotamente e acessar de qualquer dispositivo.
+  
 ## Download
 Faça o download do <a href="apk/todoapp.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
 Certifique-se de que o aparelho esteja com uma conta Google logada para conseguir testar o app.
