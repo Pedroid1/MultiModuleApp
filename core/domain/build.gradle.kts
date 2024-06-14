@@ -10,4 +10,8 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:common"))
+
+    testImplementation(libs.truth)
+    testImplementation(libs.mockk)
+    testImplementation (libs.kotlinx.coroutines.test)
 }
