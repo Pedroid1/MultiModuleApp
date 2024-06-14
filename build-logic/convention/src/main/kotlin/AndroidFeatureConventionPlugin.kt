@@ -27,6 +27,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:designsystem"))
                 add("implementation", project(":core:domain"))
                 add("implementation", project(":core:data"))
+                add("implementation", project(":core:testing"))
 
                 add("implementation", libs.findLibrary("androidx.core.ktx").get())
                 add("implementation", libs.findLibrary("androidx.appcompat").get())
@@ -35,6 +36,12 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.constraintlayout").get())
                 add("androidTestImplementation", libs.findLibrary("androidx.junit").get())
                 add("androidTestImplementation", libs.findLibrary("androidx.espresso.core").get())
+
+                add("testImplementation", libs.findLibrary("truth").get())
+                add("androidTestImplementation", libs.findLibrary("truth").get())
+
+                add("testImplementation", libs.findLibrary("mockk").get())
+                add("androidTestImplementation", libs.findLibrary("mockk.android").get())
 
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewmodel.ktx").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.livedata.ktx").get())

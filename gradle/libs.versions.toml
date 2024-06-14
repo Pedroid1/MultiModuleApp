@@ -18,14 +18,17 @@ jetbrainsKotlinJvm = "2.0.0"
 androidGradlePlugin = "8.2.2"
 detekt = "1.23.3"
 androidDesugarJdkLibs = "2.0.4"
+mockk = "1.12.5"
 navigationFragmentKtx = "2.7.7"
 navigationUiKtx = "2.7.7"
 roomRuntime = "2.6.1"
 legacySupportV4 = "1.0.0"
+androidxTestRules = "1.5.0"
 recyclerview = "1.3.2"
 truth = "1.4.2"
 
 [libraries]
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTestRules" }
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragmentKtx" }
@@ -70,6 +73,8 @@ detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gr
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
 [plugins]

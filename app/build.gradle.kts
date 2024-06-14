@@ -41,8 +41,12 @@ android {
 dependencies {
 
     implementation(project(":core:common"))
+    implementation(project(":core:data"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:testing"))
     implementation(project(":feature:onboarding"))
+    implementation(project(":feature:home"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -54,6 +58,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     testImplementation(libs.truth)
     androidTestImplementation(libs.truth)
+    testImplementation(libs.mockk)
+    androidTestImplementation (libs.mockk.android)
 
     // Hilt
     implementation (libs.hilt.android)
