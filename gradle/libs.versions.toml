@@ -17,7 +17,6 @@ activity = "1.9.0"
 constraintlayout = "2.1.4"
 jetbrainsKotlinJvm = "2.0.0"
 androidGradlePlugin = "8.2.2"
-detekt = "1.23.3"
 androidDesugarJdkLibs = "2.0.4"
 mockk = "1.12.5"
 navigationFragmentKtx = "2.7.7"
@@ -73,8 +72,6 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
-detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
@@ -85,7 +82,6 @@ truth = { module = "com.google.truth:truth", version.ref = "truth" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 # Plugins defined by this project
 project-android-application = { id = "project.android.application", version = "unspecified" }
@@ -95,6 +91,5 @@ project-android-hilt = { id = "project.android.hilt", version = "unspecified" }
 project-android-navigation = { id = "project.android.navigation", version = "unspecified" }
 project-android-room = { id = "project.android.room", version = "unspecified" }
 project-jvm-library = { id = "project.jvm.library", version = "unspecified" }
-project-kotlin-detekt = { id = "project.kotlin.detekt", version = "unspecified" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 
