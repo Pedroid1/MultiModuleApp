@@ -9,13 +9,13 @@ class TaskValidationUseCaseTest {
     private val useCase = TaskValidationUseCaseImpl()
 
     @Test
-    fun `Give empty title return invalid validation`() {
+    fun `given empty title when validateTitle is called then return invalid validation`() {
         val validation = useCase.validateTitle("")
         assertThat(validation.successful.handleOpt()).isFalse()
     }
 
     @Test
-    fun `Give valid title return valid validation`() {
+    fun `given valid title when validateTitle is called then return valid validation`() {
         val validation = useCase.validateTitle("Test")
         assertThat(validation.successful.handleOpt()).isTrue()
     }

@@ -60,6 +60,8 @@ dependencies {
     androidTestImplementation(libs.truth)
     testImplementation(libs.mockk)
     androidTestImplementation (libs.mockk.android)
+    testImplementation(libs.turbine)
+    testImplementation(libs.androidx.core.testing)
 
     // Hilt
     implementation (libs.hilt.android)

@@ -8,24 +8,24 @@ import org.junit.Test
 
 class AppPreferencesUseCaseTest {
 
-    private val prefsRepository: PrefsRepository = mockk(relaxed = true)
-    private val appPreferencesUseCaseImpl = AppPreferencesUseCaseImpl(prefsRepository)
+    private val mockPrefsRepository: PrefsRepository = mockk(relaxed = true)
+    private val appPreferencesUseCase: AppPreferencesUseCase = AppPreferencesUseCaseImpl(mockPrefsRepository)
 
     @Test
-    fun `isUserOnboarded calls repository isUserOnboarded`() {
-        every { prefsRepository.isUserOnboarded() } returns true
+    fun `given isUserOnboarded returns true when isUserOnboarded is called then repository isUserOnboarded should be called`() {
+        every { mockPrefsRepository.isUserOnboarded() } returns true
 
-        appPreferencesUseCaseImpl.isUserOnboarded()
+        appPreferencesUseCase.isUserOnboarded()
 
-        verify { prefsRepository.isUserOnboarded() }
+        verify { mockPrefsRepository.isUserOnboarded() }
     }
 
     @Test
-    fun `setUserOnboarded calls repository setUserOnboarded`() {
-        every { prefsRepository.setUserOnboarded(any()) } returns Unit
+    fun `given setUserOnboarded is called with false when setUserOnboarded is called then repository setUserOnboarded should be called with false`() {
+        every { mockPrefsRepository.setUserOnboarded(any()) } returns Unit
 
-        appPreferencesUseCaseImpl.setUserOnboarded(false)
+        appPreferencesUseCase.setUserOnboarded(false)
 
-        verify { prefsRepository.setUserOnboarded(false) }
+        verify { mockPrefsRepository.setUserOnboarded(false) }
     }
 }

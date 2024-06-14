@@ -15,66 +15,66 @@ import org.junit.Test
 
 class GetTasksUseCaseTest {
 
-    private val repository: TasksRepository = mockk(relaxed = true)
-    private val useCase = GetTasksUseCaseImpl(repository)
+    private val mockRepository: TasksRepository = mockk(relaxed = true)
+    private val useCase: GetTasksUseCase = GetTasksUseCaseImpl(mockRepository)
 
     @Test
-    fun `getTasks returns sorted tasks by isChecked and Title`() = runTest {
-        val tasksToReturn = mutableListOf<TaskEntity>()
-        ('a'..'z').forEachIndexed { index, c ->
-            tasksToReturn.add(
-                TaskEntity(
-                    uid = index,
-                    title = c.toString(),
-                    description = "",
-                    isChecked = index % 2 == 0
+    fun `given getTasks returns sorted tasks by isChecked and Title when getTasks is called then repository getTasks should return sorted tasks`() =
+        runTest {
+            val tasksToReturn = mutableListOf<TaskEntity>()
+            ('a'..'z').forEachIndexed { index, c ->
+                tasksToReturn.add(
+                    TaskEntity(
+                        uid = index,
+                        title = c.toString(),
+                        description = "",
+                        isChecked = index % 2 == 0
+                    )
                 )
-            )
-        }
-        tasksToReturn.shuffle()
+            }
+            tasksToReturn.shuffle()
 
-        every { repository.getTasks() } returns flowOf(tasksToReturn)
+            every { mockRepository.getTasks() } returns flowOf(tasksToReturn)
 
-        val tasksReturned = useCase.getTasks().first()
+            val tasksReturned = useCase.getTasks().first()
 
-        val (uncheckedTasks, checkedTasks) = tasksReturned.partition { !it.isChecked }
-        for(i in 0..uncheckedTasks.size - 2) {
-            assertThat(uncheckedTasks[i].title).isLessThan(uncheckedTasks[i + 1].title)
+            val (uncheckedTasks, checkedTasks) = tasksReturned.partition { !it.isChecked }
+            for (i in 0 until uncheckedTasks.size - 1) {
+                assertThat(uncheckedTasks[i].title).isLessThan(uncheckedTasks[i + 1].title)
+            }
+            for (i in 0 until checkedTasks.size - 1) {
+                assertThat(checkedTasks[i].title).isLessThan(checkedTasks[i + 1].title)
+            }
+            assertThat(uncheckedTasks + checkedTasks).isEqualTo(tasksReturned)
         }
-        for(i in 0..checkedTasks.size - 2) {
-            assertThat(checkedTasks[i].title).isLessThan(checkedTasks[i + 1].title)
-        }
-        assertThat(uncheckedTasks + checkedTasks).isEqualTo(tasksReturned)
-    }
 
     @Test
-    fun `insertTask calls repository insertTask`() {
+    fun `given insertTask is called with a task when insertTask is called then repository insertTask should be called with the task converted to entity`() {
         val task = Task(1, "title", "")
-        every { repository.insertTask(any()) } returns Unit
+        every { mockRepository.insertTask(any()) } returns Unit
 
         useCase.insertTask(task)
 
-        verify { repository.insertTask(task.toEntity()) }
+        verify { mockRepository.insertTask(task.toEntity()) }
     }
 
     @Test
-    fun `deleteTask calls repository deleteTask`() {
+    fun `given deleteTask is called with a task when deleteTask is called then repository deleteTask should be called with the task converted to entity`() {
         val task = Task(1, "title", "")
-        every { repository.deleteTask(any()) } returns Unit
+        every { mockRepository.deleteTask(any()) } returns Unit
 
         useCase.deleteTask(task)
 
-        verify { repository.deleteTask(task.toEntity()) }
+        verify { mockRepository.deleteTask(task.toEntity()) }
     }
 
     @Test
-    fun `updateTask calls repository`() {
+    fun `given updateTask is called with a task when updateTask is called then repository updateTask should be called with the task converted to entity`() {
         val task = Task(1, "title", "")
-        every { repository.updateTask(any()) } returns Unit
+        every { mockRepository.updateTask(any()) } returns Unit
 
         useCase.updateTask(task)
 
-        verify { repository.updateTask(task.toEntity()) }
+        verify { mockRepository.updateTask(task.toEntity()) }
     }
-
 }
