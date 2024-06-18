@@ -1,6 +1,6 @@
 package com.pedroid.testing.repository
 
-import com.pedroid.data.repositories.tasks.TasksRepository
+import com.pedroid.domain.repository.TasksRepository
 import com.pedroid.model.Task
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

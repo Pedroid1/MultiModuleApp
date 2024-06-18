@@ -1,4 +1,4 @@
-package com.pedroid.data.repositories.preferences
+package com.pedroid.domain.repository
 
 interface PrefsRepository {
     fun isUserOnboarded(): Boolean

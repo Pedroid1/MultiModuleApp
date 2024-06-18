@@ -1,7 +1,8 @@
-package com.pedroid.data.repositories.preferences
+package com.pedroid.data.repository.preferences
 
 import android.content.Context
 import com.pedroid.common.util.Constants
+import com.pedroid.domain.repository.PrefsRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

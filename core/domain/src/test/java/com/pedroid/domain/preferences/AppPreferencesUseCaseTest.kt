@@ -1,6 +1,6 @@
 package com.pedroid.domain.preferences
 
-import com.pedroid.data.repositories.preferences.PrefsRepository
+import com.pedroid.domain.repository.PrefsRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

@@ -1,4 +1,4 @@
-package com.pedroid.data.repositories.tasks
+package com.pedroid.domain.repository
 
 import com.pedroid.model.Task
 import kotlinx.coroutines.flow.Flow

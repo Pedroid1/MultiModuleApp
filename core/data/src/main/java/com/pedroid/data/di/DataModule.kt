@@ -1,7 +1,7 @@
 package com.pedroid.data.di
 
 import android.content.Context
-import com.pedroid.data.repositories.preferences.AppPreferencesRepositoryImpl
+import com.pedroid.data.repository.preferences.AppPreferencesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,10 +1,11 @@
-package com.pedroid.data.repositories.tasks
+package com.pedroid.data.repository.tasks
 
 import com.pedroid.data.model.toEntity
 import com.pedroid.database.BinDispatchers
 import com.pedroid.database.Dispatcher
 import com.pedroid.database.dao.TasksDao
 import com.pedroid.database.model.toExternalModel
+import com.pedroid.domain.repository.TasksRepository
 import com.pedroid.model.Task
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope

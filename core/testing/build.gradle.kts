@@ -8,8 +8,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:data"))
     implementation(project(":core:model"))
+    implementation(project(":core:domain"))
 
     api(libs.truth)
     api(libs.mockk)

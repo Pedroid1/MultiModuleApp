@@ -12,8 +12,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:data"))
     implementation(project(":core:model"))
     implementation(project(":core:common"))
-    implementation(project(":core:testing"))
+
+    testImplementation(libs.truth)
+    testImplementation(libs.mockk)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
