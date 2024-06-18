@@ -28,9 +28,9 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="task"
-            app:argType="com.pedroid.domain.model.Task"
-            android:defaultValue="@null"
-            app:nullable="true" />
+            app:argType="com.pedroid.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null"/>
     </dialog>
     <dialog
         android:id="@+id/taskDetailDialogFragment"
@@ -38,7 +38,7 @@
         android:label="TaskDetailDialogFragment" >
         <argument
             android:name="task"
-            app:argType="com.pedroid.domain.model.Task"
+            app:argType="com.pedroid.model.Task"
             app:nullable="true"
             android:defaultValue="@null" />
     </dialog>

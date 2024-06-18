@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.pedroid.common.base.BaseFragment
-import com.pedroid.domain.model.Task
 import com.pedroid.feature.home.R
 import com.pedroid.feature.home.databinding.FragmentHomeScreenBinding
 import com.pedroid.home.fragment.adapter.EnumTaskListAdapterViewType
 import com.pedroid.home.fragment.adapter.HomeAdapterEvent
 import com.pedroid.home.fragment.adapter.TaskListAdapter
 import com.pedroid.home.fragment.adapter.TaskListAdapterItem
+import com.pedroid.model.Task
 
 class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.fragment_home_screen),
     HomeAdapterEvent {

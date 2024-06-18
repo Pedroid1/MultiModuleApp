@@ -1,7 +1,7 @@
-package com.pedroid.data.di
+package com.pedroid.database.di
 
-import com.pedroid.data.BinDispatchers
-import com.pedroid.data.Dispatcher
+import com.pedroid.database.BinDispatchers
+import com.pedroid.database.Dispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

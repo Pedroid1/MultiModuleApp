@@ -1,4 +1,4 @@
-package com.pedroid.data
+package com.pedroid.database
 
 import javax.inject.Qualifier
 import kotlin.annotation.AnnotationRetention.RUNTIME

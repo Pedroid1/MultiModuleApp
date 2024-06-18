@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(project(":core:data"))
+    implementation(project(":core:model"))
 
     api(libs.truth)
     api(libs.mockk)

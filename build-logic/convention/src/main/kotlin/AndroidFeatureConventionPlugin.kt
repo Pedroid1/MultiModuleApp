@@ -27,6 +27,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:designsystem"))
                 add("implementation", project(":core:domain"))
                 add("implementation", project(":core:data"))
+                add("implementation", project(":core:model"))
                 add("implementation", project(":core:testing"))
 
                 add("implementation", libs.findLibrary("androidx.core.ktx").get())
@@ -40,7 +41,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewmodel.ktx").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.livedata.ktx").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtime.ktx").get())
-                add("kapt", libs.findLibrary("androidx.lifecycle.compiler").get())
+                add("ksp", libs.findLibrary("androidx.lifecycle.compiler").get())
 
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
             }

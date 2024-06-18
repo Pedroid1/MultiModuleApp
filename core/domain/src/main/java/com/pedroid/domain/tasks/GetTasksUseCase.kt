@@ -1,6 +1,6 @@
 package com.pedroid.domain.tasks
 
-import com.pedroid.domain.model.Task
+import com.pedroid.model.Task
 import kotlinx.coroutines.flow.Flow
 
 interface GetTasksUseCase {

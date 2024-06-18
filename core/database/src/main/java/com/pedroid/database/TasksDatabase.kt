@@ -1,9 +1,9 @@
-package com.pedroid.data.local
+package com.pedroid.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.pedroid.data.dao.TasksDao
-import com.pedroid.data.model.TaskEntity
+import com.pedroid.database.dao.TasksDao
+import com.pedroid.database.model.TaskEntity
 
 @Database(
     entities = [TaskEntity::class],

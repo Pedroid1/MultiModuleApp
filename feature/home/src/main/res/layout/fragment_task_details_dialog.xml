@@ -7,7 +7,7 @@
 
         <variable
             name="task"
-            type="com.pedroid.domain.model.Task" />
+            type="com.pedroid.model.Task" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

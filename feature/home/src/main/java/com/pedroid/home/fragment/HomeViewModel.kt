@@ -9,10 +9,10 @@ import com.pedroid.common.base.BaseViewModel
 import com.pedroid.common.data.resultResource
 import com.pedroid.common.util.Event
 import com.pedroid.domain.ValidationResult
-import com.pedroid.domain.model.Task
 import com.pedroid.domain.tasks.GetTasksUseCase
 import com.pedroid.domain.ui.task.TaskValidationUseCase
 import com.pedroid.home.fragment.adapter.TaskListAdapterItem
+import com.pedroid.model.Task
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

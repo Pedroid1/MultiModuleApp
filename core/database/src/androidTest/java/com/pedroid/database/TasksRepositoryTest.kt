@@ -1,4 +1,4 @@
-package com.pedroid.data
+package com.pedroid.database
 
 import android.content.Context
 import androidx.room.Room
@@ -6,9 +6,8 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
-import com.pedroid.data.dao.TasksDao
-import com.pedroid.data.local.TasksDatabase
-import com.pedroid.data.model.TaskEntity
+import com.pedroid.database.dao.TasksDao
+import com.pedroid.database.model.TaskEntity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After

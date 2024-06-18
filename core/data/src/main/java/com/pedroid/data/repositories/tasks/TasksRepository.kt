@@ -1,12 +1,12 @@
 package com.pedroid.data.repositories.tasks
 
-import com.pedroid.data.model.TaskEntity
+import com.pedroid.model.Task
 import kotlinx.coroutines.flow.Flow
 
 interface TasksRepository {
 
-    fun insertTask(task: TaskEntity)
-    fun deleteTask(task: TaskEntity)
-    fun getTasks(): Flow<List<TaskEntity>>
-    fun updateTask(task: TaskEntity)
+    fun insertTask(task: Task)
+    fun deleteTask(task: Task)
+    fun getTasks(): Flow<List<Task>>
+    fun updateTask(task: Task)
 }

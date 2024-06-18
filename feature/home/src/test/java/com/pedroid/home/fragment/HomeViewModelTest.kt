@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.pedroid.common.util.handleOpt
 import com.pedroid.domain.ValidationResult
-import com.pedroid.domain.model.Task
 import com.pedroid.domain.tasks.GetTasksUseCaseImpl
 import com.pedroid.domain.ui.task.TaskValidationUseCase
+import com.pedroid.model.Task
 import com.pedroid.testing.repository.TestTasksRepository
 import com.pedroid.testing.util.MainDispatcherRule
 import getOrAwaitValue

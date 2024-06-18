@@ -8,13 +8,13 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("org.jetbrains.kotlin.kapt")
+                apply("com.google.devtools.ksp")
             }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 "implementation"(libs.findLibrary("androidx.room.runtime").get())
-                "kapt"(libs.findLibrary("androidx.room.compiler").get())
+                "ksp"(libs.findLibrary("androidx.room.compiler").get())
                 "implementation"(libs.findLibrary("androidx.room.ktx").get())
                 "testImplementation"(libs.findLibrary("androidx.room.testing").get())
             }

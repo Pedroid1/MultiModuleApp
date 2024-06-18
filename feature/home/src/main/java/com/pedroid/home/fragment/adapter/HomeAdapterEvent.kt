@@ -1,6 +1,6 @@
 package com.pedroid.home.fragment.adapter
 
-import com.pedroid.domain.model.Task
+import com.pedroid.model.Task
 
 interface HomeAdapterEvent {
 

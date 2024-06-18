@@ -1,11 +1,11 @@
-package com.pedroid.data.dao
+package com.pedroid.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.pedroid.data.model.TaskEntity
+import com.pedroid.database.model.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

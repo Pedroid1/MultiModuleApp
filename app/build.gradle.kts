@@ -48,7 +48,3 @@ dependencies {
         if(module.path !in listExcludes) implementation(project(module.path))
     }
 }
-
-kapt {
-    correctErrorTypes = true
-}

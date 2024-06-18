@@ -1,7 +1,7 @@
-package com.pedroid.data.di
+package com.pedroid.database.di
 
-import com.pedroid.data.dao.TasksDao
-import com.pedroid.data.local.TasksDatabase
+import com.pedroid.database.TasksDatabase
+import com.pedroid.database.dao.TasksDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

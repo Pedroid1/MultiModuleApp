@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.pedroid.domain.model.Task" />
+        <import type="com.pedroid.model.Task" />
 
         <import type="com.pedroid.home.fragment.adapter.HomeAdapterEvent" />
 
