@@ -1,19 +1,27 @@
 package com.pedroid.home.fragment
 
+import android.os.Build
 import android.os.Bundle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
-import com.pedroid.feature.home.databinding.FragmentTaskDetailsDialogBinding
+import com.pedroid.feature.main.home.databinding.FragmentTaskDetailsDialogBinding
+import com.pedroid.model.Task
 
 class TaskDetailDialogFragment : BottomSheetDialogFragment() {
 
+    companion object {
+        const val TASK_EXTRA_KEY = "task_key"
+    }
+
     private lateinit var binding: FragmentTaskDetailsDialogBinding
-    private val args: TaskDetailDialogFragmentArgs by navArgs()
     private val taskArgs by lazy {
-        args.task
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arguments?.getSerializable(TASK_EXTRA_KEY, Task::class.java)
+        } else {
+            arguments?.getSerializable(TASK_EXTRA_KEY) as Task
+        }
     }
 
     override fun onCreateView(

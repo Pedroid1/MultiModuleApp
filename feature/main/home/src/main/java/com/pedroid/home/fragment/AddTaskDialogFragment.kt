@@ -1,24 +1,41 @@
 package com.pedroid.home.fragment
 
+import android.os.Build
 import android.os.Bundle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.pedroid.feature.home.R
-import com.pedroid.feature.home.databinding.FragmentAddTaskDialogListDialogBinding
+import com.pedroid.feature.main.home.R
+import com.pedroid.feature.main.home.databinding.FragmentAddTaskDialogListDialogBinding
+import com.pedroid.home.navigation.HomeNavigationNode
 import com.pedroid.model.Task
+import com.pedroid.navigation.navigateWithArgs
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AddTaskDialogFragment : BottomSheetDialogFragment() {
+
+    companion object {
+        const val TASK_EXTRA_KEY = "task_extra"
+    }
+
+    @Inject
+    lateinit var navController: NavController
 
     private val viewModel by lazy { ViewModelProvider(requireActivity())[HomeViewModel::class.java] }
     private lateinit var binding: FragmentAddTaskDialogListDialogBinding
-    private val args: AddTaskDialogFragmentArgs by navArgs()
-    private val task by lazy {
-        args.task
+    private val task: Task? by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arguments?.getSerializable(TASK_EXTRA_KEY, Task::class.java)
+        } else {
+            arguments?.getSerializable(TASK_EXTRA_KEY) as? Task
+        }
     }
 
     override fun onCreateView(
@@ -59,16 +76,11 @@ class AddTaskDialogFragment : BottomSheetDialogFragment() {
             insertResultLiveData.observe(viewLifecycleOwner) { event ->
                 event.getContentIfNotHandled()?.let { result ->
                     if(result) {
-                        navigateToHomeScreen()
+                        dismissNow()
                     }
                 }
             }
         }
-    }
-
-    private fun navigateToHomeScreen() {
-        val action = AddTaskDialogFragmentDirections.actionAddTaskDialogFragmentToHomeScreenFragment()
-        findNavController().navigate(action)
     }
 
     private fun setupListener() {
@@ -80,7 +92,7 @@ class AddTaskDialogFragment : BottomSheetDialogFragment() {
                 if(task != taskCopy) {
                     viewModel.insertTaskWithFieldsValidation(taskCopy)
                 } else {
-                    navigateToHomeScreen()
+                    dismissNow()
                 }
             } ?: viewModel.insertTaskWithFieldsValidation(Task(title = title, description = description))
         }

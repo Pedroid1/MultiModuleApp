@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.pedroid.feature.home.databinding.EmptyItemBinding
-import com.pedroid.feature.home.databinding.TaskItemBinding
+import com.pedroid.feature.main.home.databinding.EmptyItemBinding
+import com.pedroid.feature.main.home.databinding.TaskItemBinding
 
 class TaskListAdapter(private val eventListener: HomeAdapterEvent) :
     ListAdapter<TaskListAdapterItem, TaskListAdapter.TaskViewHolder>(DIFFUTILS) {

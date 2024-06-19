@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.pedroid.common.preferences.PreferencesManager
+import com.pedroid.communicator.HomeFeatureCommunicator
 import com.pedroid.feature.onboarding.R
 import com.pedroid.feature.onboarding.databinding.FragmentThirdScreenBinding
+import com.pedroid.onboarding.navigation.OnboardingNavigationNode
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -19,6 +21,8 @@ class ThirdScreenFragment : Fragment() {
 
     @Inject
     lateinit var preferencesManager: PreferencesManager
+    @Inject
+    lateinit var homeFeatureCommunicator: HomeFeatureCommunicator
     private lateinit var binding: FragmentThirdScreenBinding
 
     override fun onCreateView(
@@ -33,7 +37,7 @@ class ThirdScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.finishBtn.setOnClickListener {
             preferencesManager.isOnboardingCompleted = true
-            findNavController().navigate(R.id.action_viewPagerFragment_to_home_nav_graph)
+            homeFeatureCommunicator.launchFeature(HomeFeatureCommunicator.HomeFeatureArgs(OnboardingNavigationNode.ROUTE))
         }
         binding.previusBtn.setOnClickListener {
             activity?.findViewById<ViewPager2>(R.id.viewPager)?.apply {
