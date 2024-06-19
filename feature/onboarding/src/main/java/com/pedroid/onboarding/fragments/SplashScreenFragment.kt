@@ -5,15 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import com.pedroid.common.preferences.PreferencesManager
 import com.pedroid.communicator.HomeFeatureCommunicator
 import com.pedroid.feature.onboarding.databinding.FragmentSplashScreenBinding
-import com.pedroid.navigation.navigateWithArgs
+import com.pedroid.navigation.navigateWithAnimation
 import com.pedroid.onboarding.navigation.OnboardingNavigationNode
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -48,8 +45,10 @@ class SplashScreenFragment : Fragment() {
                 homeFeatureCommunicator.launchFeature(HomeFeatureCommunicator.HomeFeatureArgs(OnboardingNavigationNode.ROUTE))
                 return@launch
             }
-            val navOptions = NavOptions.Builder().setPopUpTo(OnboardingNavigationNode.START_DESTINATION, true).build()
-            navController.navigateWithArgs(route = OnboardingNavigationNode.VIEW_PAGER_DESTINATION, navOptions = navOptions)
+            navController.navigateWithAnimation(
+                route = OnboardingNavigationNode.VIEW_PAGER_DESTINATION,
+                popUpTo = OnboardingNavigationNode.ROUTE,
+                inclusive = true)
         }
     }
 }
