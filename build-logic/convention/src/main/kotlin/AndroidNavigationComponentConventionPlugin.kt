@@ -7,9 +7,6 @@ import org.gradle.kotlin.dsl.getByType
 class AndroidNavigationComponentConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("androidx.navigation.safeargs.kotlin")
-            }
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {

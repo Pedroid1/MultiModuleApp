@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.project.android.feature)
+
 }
 
 android {
-    namespace = "com.pedroid.feature.onboarding"
+    namespace = "com.pedroid.feature.main.home"
 
     buildFeatures {
         dataBinding = true
