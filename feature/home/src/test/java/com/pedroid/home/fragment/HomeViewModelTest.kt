@@ -1,11 +1,13 @@
 package com.pedroid.home.fragment
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
 import com.pedroid.common.util.handleOpt
 import com.pedroid.domain.ValidationResult
 import com.pedroid.domain.tasks.GetTasksUseCaseImpl
 import com.pedroid.domain.ui.task.TaskValidationUseCase
+import com.pedroid.home.fragment.adapter.TaskListAdapterItem
 import com.pedroid.model.Task
 import com.pedroid.testing.repository.TestTasksRepository
 import com.pedroid.testing.util.MainDispatcherRule
@@ -14,10 +16,16 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
 import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class HomeViewModelTest {
 
     @get:Rule
@@ -53,22 +61,52 @@ class HomeViewModelTest {
         }
     }
 
+
     @Test
-    fun `when insertTask is called, then homeUiState should contain the inserted task`() {
+    fun `when insertTask is called, then homeUiState should contain the inserted task`() = runTest {
+        backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
+            viewModel.homeState.collect()
+        }
+
         val task = Task(title = "", description = "")
         viewModel.insertTask(task)
 
-        assertThat(viewModel.homeUiState.getOrAwaitValue().data.handleOpt()).contains(task)
+        assertThat(viewModel.homeState.value.data?.handleOpt()).contains(task)
+    }
+
+
+    @Test
+    fun `when deleteTask is called, then homeUiState should not contain the deleted task`() = runTest {
+        backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
+            viewModel.homeState.collect()
+        }
+
+        val task = Task(title = "", description = "")
+        viewModel.insertTask(task)
+
+        assertThat(viewModel.homeState.value.data?.handleOpt()).contains(task)
+
+        viewModel.deleteTask(task)
+
+        assertThat(viewModel.homeState.value.data?.handleOpt()).doesNotContain(task)
     }
 
     @Test
-    fun `when deleteTask is called, then homeUiState should not contain the deleted task`() {
-        val task = Task(title = "", description = "")
-        viewModel.insertTask(task)
-        assertThat(viewModel.homeUiState.getOrAwaitValue().data.handleOpt()).contains(task)
+    fun `when updateTask is called, then homeUiState should contain updated task`() = runTest {
+        backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
+            viewModel.homeState.collect()
+        }
 
-        viewModel.deleteTask(task)
-        assertThat(viewModel.homeUiState.getOrAwaitValue().data.handleOpt()).doesNotContain(task)
+        val task = Task(uid = 1, title = "", description = "")
+        viewModel.insertTask(task)
+
+        assertThat(viewModel.homeState.value.data?.handleOpt()).contains(task)
+
+        val updatedTask = task.copy(title = "Updated")
+        viewModel.updateTask(updatedTask)
+
+        assertThat(viewModel.homeState.value.data?.handleOpt()).doesNotContain(task)
+        assertThat(viewModel.homeState.value.data?.handleOpt()).contains(updatedTask)
     }
 
     @Test
@@ -85,5 +123,18 @@ class HomeViewModelTest {
         every { mockValidationUseCase.validateTitle(any()) } returns ValidationResult(true)
         viewModel.insertTaskWithFieldsValidation(task)
         assertThat(viewModel.insertResultLiveData.getOrAwaitValue().getContentIfNotHandled().handleOpt()).isTrue()
+    }
+
+    @Test
+    fun `when generateHomeAdapterList called with empty list, return list with EmptyItem`() {
+        val list = viewModel.generateHomeAdapterList(emptyList())
+        assertThat(list[0]).isInstanceOf(TaskListAdapterItem.EmptyItem::class.java)
+    }
+
+    @Test
+    fun `when generateHomeAdapterList called with taskList, return list with TaskItems`() {
+        val list = listOf(Task(title = "", description = ""))
+        val listAdapter = viewModel.generateHomeAdapterList(list)
+        assertThat(listAdapter[0]).isInstanceOf(TaskListAdapterItem.TaskItem::class.java)
     }
 }

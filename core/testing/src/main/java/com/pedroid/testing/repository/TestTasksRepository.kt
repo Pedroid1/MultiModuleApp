@@ -11,7 +11,7 @@ class TestTasksRepository: TasksRepository {
     private val tasksFlow = MutableStateFlow(emptyList<Task>())
 
     override fun insertTask(task: Task) = tasksFlow.update { oldValues ->
-        oldValues + task
+        oldValues.filterNot { it.uid == task.uid } + task
     }
 
     override fun deleteTask(task: Task) = tasksFlow.update { oldValues ->
