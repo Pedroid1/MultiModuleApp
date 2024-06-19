@@ -53,6 +53,11 @@ class AddTaskDialogFragment : BottomSheetDialogFragment() {
         } ?: R.string.add
         binding.addBtn.text = requireContext().getString(buttonTextId)
 
+        val titleTextId = task?.let {
+            R.string.edit_task
+        } ?: R.string.create_new_task
+        binding.title.text = requireContext().getString(titleTextId)
+
         task?.let {
             binding.taskTitleEdt.setText(it.title)
             binding.taskDescriptionEdt.setText(it.description)
