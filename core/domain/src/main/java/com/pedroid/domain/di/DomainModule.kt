@@ -1,7 +1,5 @@
 package com.pedroid.domain.di
 
-import com.pedroid.domain.preferences.AppPreferencesUseCase
-import com.pedroid.domain.preferences.AppPreferencesUseCaseImpl
 import com.pedroid.domain.tasks.GetTasksUseCase
 import com.pedroid.domain.tasks.GetTasksUseCaseImpl
 import com.pedroid.domain.ui.task.TaskValidationUseCase
@@ -17,9 +15,6 @@ abstract class DomainModule {
 
     @Binds
     abstract fun bindGetTasksUseCase(tasksUseCaseImpl: GetTasksUseCaseImpl): GetTasksUseCase
-
-    @Binds
-    abstract fun bindAppPreferencesUseCase(appPreferencesUseCaseImpl: AppPreferencesUseCaseImpl): AppPreferencesUseCase
 
     @Binds
     abstract fun bindValidationTaskUseCase(validationUseCase: TaskValidationUseCaseImpl): TaskValidationUseCase

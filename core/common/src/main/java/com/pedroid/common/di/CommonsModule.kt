@@ -1,7 +1,7 @@
-package com.pedroid.data.di
+package com.pedroid.common.di
 
 import android.content.Context
-import com.pedroid.data.repository.preferences.AppPreferencesRepositoryImpl
+import com.pedroid.common.preferences.PreferencesManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,11 +11,11 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataModule {
+class CommonsModule {
 
     @Provides
     @Singleton
-    fun providesPrefsRepository(
-        @ApplicationContext context: Context
-    ) = AppPreferencesRepositoryImpl(context)
+    fun providePreferencesManager(@ApplicationContext context: Context): PreferencesManager {
+        return PreferencesManager(context)
+    }
 }

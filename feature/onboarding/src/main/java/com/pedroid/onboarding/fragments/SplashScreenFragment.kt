@@ -8,13 +8,18 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.pedroid.common.preferences.PreferencesManager
 import com.pedroid.feature.onboarding.databinding.FragmentSplashScreenBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashScreenFragment : Fragment() {
 
-    private val viewModel by lazy { ViewModelProvider(requireActivity())[OnboardingViewModel::class.java] }
+    @Inject
+    lateinit var preferencesManager: PreferencesManager
     private lateinit var binding: FragmentSplashScreenBinding
 
     override fun onCreateView(
@@ -25,24 +30,17 @@ class SplashScreenFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObserver()
-    }
-
-    private fun setupObserver() {
-        viewModel.isUserOnboarded.observe(viewLifecycleOwner) { isOnboarded ->
-            lifecycleScope.launch {
-                delay(2000)
-                if(isOnboarded) {
-                    val action = SplashScreenFragmentDirections.actionSplashScreenFragmentToHomeNavGraph()
-                    findNavController().navigate(action)
-                    return@launch
-                }
-                val action = SplashScreenFragmentDirections.actionSplashScreenFragmentToViewPagerFragment()
+        lifecycleScope.launch {
+            delay(2000)
+            if(preferencesManager.isOnboardingCompleted) {
+                val action = SplashScreenFragmentDirections.actionSplashScreenFragmentToHomeNavGraph()
                 findNavController().navigate(action)
+                return@launch
             }
+            val action = SplashScreenFragmentDirections.actionSplashScreenFragmentToViewPagerFragment()
+            findNavController().navigate(action)
         }
     }
 }
