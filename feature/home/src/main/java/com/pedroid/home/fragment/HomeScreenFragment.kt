@@ -1,26 +1,65 @@
 package com.pedroid.home.fragment
 
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.pedroid.common.base.BaseFragment
-import com.pedroid.domain.model.Task
 import com.pedroid.feature.home.R
 import com.pedroid.feature.home.databinding.FragmentHomeScreenBinding
 import com.pedroid.home.fragment.adapter.EnumTaskListAdapterViewType
 import com.pedroid.home.fragment.adapter.HomeAdapterEvent
 import com.pedroid.home.fragment.adapter.TaskListAdapter
 import com.pedroid.home.fragment.adapter.TaskListAdapterItem
+import com.pedroid.model.Task
+import kotlinx.coroutines.launch
 
-class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.fragment_home_screen),
-    HomeAdapterEvent {
+class HomeScreenFragment : Fragment(), HomeAdapterEvent {
 
     private val viewModel by lazy { ViewModelProvider(requireActivity())[HomeViewModel::class.java] }
     private val homeAdapter = TaskListAdapter(this)
+    private lateinit var _binding: FragmentHomeScreenBinding
 
-    override fun initialWork() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("OnCreateTest", "OnCreate")
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.homeState.collect { result ->
+                    result.data?.let { data ->
+                        homeAdapter.submitList(viewModel.generateHomeAdapterList(data))
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
+        return _binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initialWork()
+    }
+
+    fun initialWork() {
         _binding.taskRecyclerView.adapter = homeAdapter
         ItemTouchHelper(itemTouchCallback).attachToRecyclerView(_binding.taskRecyclerView)
 
@@ -32,18 +71,6 @@ class HomeScreenFragment : BaseFragment<FragmentHomeScreenBinding>(R.layout.frag
     private fun showAddTaskBottomSheet(task: Task? = null) {
         val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToAddTaskDialogFragment(task)
         findNavController().navigate(action)
-    }
-
-    override fun setupViewModel() {
-        _binding.vm = viewModel
-    }
-
-    override fun setupObservers() {
-        viewModel.homeUiState.observe(viewLifecycleOwner) { uiState ->
-            uiState.data?.let { data ->
-                homeAdapter.submitList(viewModel.generateHomeAdapterList(data))
-            }
-        }
     }
 
     override fun addTask() {

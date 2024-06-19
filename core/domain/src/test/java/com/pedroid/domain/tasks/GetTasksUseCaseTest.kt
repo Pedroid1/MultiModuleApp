@@ -1,10 +1,8 @@
 package com.pedroid.domain.tasks
 
 import com.google.common.truth.Truth.assertThat
-import com.pedroid.data.model.TaskEntity
-import com.pedroid.data.repositories.tasks.TasksRepository
-import com.pedroid.domain.model.Task
-import com.pedroid.domain.model.toEntity
+import com.pedroid.domain.repository.TasksRepository
+import com.pedroid.model.Task
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -21,10 +19,10 @@ class GetTasksUseCaseTest {
     @Test
     fun `given getTasks returns sorted tasks by isChecked and Title when getTasks is called then repository getTasks should return sorted tasks`() =
         runTest {
-            val tasksToReturn = mutableListOf<TaskEntity>()
+            val tasksToReturn = mutableListOf<Task>()
             ('a'..'z').forEachIndexed { index, c ->
                 tasksToReturn.add(
-                    TaskEntity(
+                    Task(
                         uid = index,
                         title = c.toString(),
                         description = "",
@@ -55,7 +53,7 @@ class GetTasksUseCaseTest {
 
         useCase.insertTask(task)
 
-        verify { mockRepository.insertTask(task.toEntity()) }
+        verify { mockRepository.insertTask(task) }
     }
 
     @Test
@@ -65,7 +63,7 @@ class GetTasksUseCaseTest {
 
         useCase.deleteTask(task)
 
-        verify { mockRepository.deleteTask(task.toEntity()) }
+        verify { mockRepository.deleteTask(task) }
     }
 
     @Test
@@ -75,6 +73,6 @@ class GetTasksUseCaseTest {
 
         useCase.updateTask(task)
 
-        verify { mockRepository.updateTask(task.toEntity()) }
+        verify { mockRepository.updateTask(task) }
     }
 }

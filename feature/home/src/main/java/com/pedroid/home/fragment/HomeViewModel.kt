@@ -6,16 +6,21 @@ import androidx.lifecycle.viewModelScope
 import com.pedroid.common.data.asResult
 import com.pedroid.common.base.BaseState
 import com.pedroid.common.base.BaseViewModel
+import com.pedroid.common.data.DataResource
 import com.pedroid.common.data.resultResource
 import com.pedroid.common.util.Event
 import com.pedroid.domain.ValidationResult
-import com.pedroid.domain.model.Task
 import com.pedroid.domain.tasks.GetTasksUseCase
 import com.pedroid.domain.ui.task.TaskValidationUseCase
 import com.pedroid.home.fragment.adapter.TaskListAdapterItem
+import com.pedroid.model.Task
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,20 +29,29 @@ class HomeViewModel @Inject constructor(
     private val validationUseCase: TaskValidationUseCase
 ) : BaseViewModel() {
 
-    private val _homeUiState = MutableLiveData(BaseState<List<Task>>())
-    val homeUiState: LiveData<BaseState<List<Task>>> = _homeUiState
-
     private val _validationLiveData = MutableLiveData<Event<ValidationResult>>()
     val validationLiveData: LiveData<Event<ValidationResult>> = _validationLiveData
 
     private val _insertResultLiveData = MutableLiveData<Event<Boolean>>()
     val insertResultLiveData: LiveData<Event<Boolean>> = _insertResultLiveData
 
-    init {
-        useCase.getTasks().asResult().onEach { result ->
-            resultResource(result, _homeUiState)
-        }.launchIn(viewModelScope)
-    }
+    val homeState = useCase.getTasks().asResult().map { result ->
+        when(result) {
+            is DataResource.Loading -> {
+                BaseState(isLoading = true)
+            }
+            is DataResource.Success -> {
+                BaseState(isLoading = false, data = result.data)
+            }
+            is DataResource.Error -> {
+                BaseState(isLoading = false, data = null, error = result.exception?.toString() ?: "")
+            }
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = BaseState(isLoading = true)
+    )
 
     fun insertTaskWithFieldsValidation(task: Task) {
         val result = validationUseCase.validateTitle(task.title)

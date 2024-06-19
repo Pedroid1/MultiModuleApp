@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.pedroid.domain.model.Task
 import com.pedroid.feature.home.R
 import com.pedroid.feature.home.databinding.FragmentAddTaskDialogListDialogBinding
+import com.pedroid.model.Task
 
 class AddTaskDialogFragment : BottomSheetDialogFragment() {
 

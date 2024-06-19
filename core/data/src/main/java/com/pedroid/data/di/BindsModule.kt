@@ -1,9 +1,9 @@
 package com.pedroid.data.di
 
-import com.pedroid.data.repositories.preferences.PrefsRepository
-import com.pedroid.data.repositories.preferences.AppPreferencesRepositoryImpl
-import com.pedroid.data.repositories.tasks.TasksRepository
-import com.pedroid.data.repositories.tasks.TasksRepositoryImpl
+import com.pedroid.data.repository.preferences.AppPreferencesRepositoryImpl
+import com.pedroid.data.repository.tasks.TasksRepositoryImpl
+import com.pedroid.domain.repository.PrefsRepository
+import com.pedroid.domain.repository.TasksRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

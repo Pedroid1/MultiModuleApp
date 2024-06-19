@@ -8,12 +8,14 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:data"))
+    implementation(project(":core:model"))
+    implementation(project(":core:domain"))
 
     api(libs.truth)
     api(libs.mockk)
     api(libs.androidx.core.testing)
     api(libs.kotlinx.coroutines.test)
+    api(libs.turbine)
 
     implementation(libs.androidx.test.rules)
     implementation(libs.hilt.android.testing)
