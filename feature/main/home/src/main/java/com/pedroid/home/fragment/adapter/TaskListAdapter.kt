@@ -89,6 +89,7 @@ class TaskListAdapter(private val eventListener: HomeAdapterEvent) :
                             oldItem.task.uid != newItem.task.uid -> false
                             oldItem.task.title != newItem.task.title -> false
                             oldItem.task.isChecked != newItem.task.isChecked -> false
+                            oldItem.task.description != newItem.task.description -> false
                             else -> true
                         }
                     }
@@ -107,6 +108,7 @@ class TaskListAdapter(private val eventListener: HomeAdapterEvent) :
                             oldItem.task.uid != newItem.task.uid -> false
                             oldItem.task.title != newItem.task.title -> false
                             oldItem.task.isChecked != newItem.task.isChecked -> false
+                            oldItem.task.description != newItem.task.description -> false
                             else -> true
                         }
                     }
