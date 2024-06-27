@@ -17,13 +17,6 @@
 - #### Tela Home
   - Onde os usuários podem adicionar, marcar como concluídas, editar e excluir tarefas.
 </p>
-
-### Considerações Adicionais
-#### Com mais tempo, adicionaria:
-- Seleção de Data e Hora: Para definir prazos específicos.
-- Níveis de Prioridade: Para focar nas tarefas mais importantes.
-- Categorias de Tarefas: Para agrupar tarefas por áreas da vida.
-- Sistema de Login: Para salvar dados remotamente e acessar de qualquer dispositivo.
   
 ## Download
 Faça o download do <a href="apk/todoapp.apk?raw=true">APK diretamente</a>. Você pode ver <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">aqui</a> como instalar uma APK no seu aparelho android.
