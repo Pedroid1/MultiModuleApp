@@ -44,7 +44,7 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
     private fun setTextType(type: EnumTextType) {
         val fontResId = when (type) {
             EnumTextType.TITLE1, EnumTextType.TITLE2, EnumTextType.TITLE3 -> R.font.poppins_semibold
-            EnumTextType.SUBTITLE1, EnumTextType.SUBTITLE2, EnumTextType.HEADER -> R.font.poppins_medium
+            EnumTextType.SUBTITLE1, EnumTextType.SUBTITLE2 -> R.font.poppins_medium
             else -> R.font.poppins_regular
         }
         val textSizeSp = when (type) {
@@ -53,13 +53,8 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
             EnumTextType.TITLE3 -> 14f
             EnumTextType.SUBTITLE1 -> 13f
             EnumTextType.SUBTITLE2 -> 11f
-            EnumTextType.HEADER, EnumTextType.BODY1 -> 13f
+            EnumTextType.BODY1 -> 13f
             EnumTextType.BODY2 -> 12f
-            EnumTextType.CAPTION -> 10f
-            EnumTextType.OVERLINE -> {
-                isAllCaps = true
-                11f
-            }
         }
         val font = ResourcesCompat.getFont(context, fontResId)
         this.typeface = font
@@ -72,11 +67,8 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
         TITLE3,
         SUBTITLE1,
         SUBTITLE2,
-        HEADER,
         BODY1,
-        BODY2,
-        CAPTION,
-        OVERLINE;
+        BODY2;
 
         companion object {
             @JvmStatic

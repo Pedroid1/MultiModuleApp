@@ -25,8 +25,8 @@
         android:layout_marginHorizontal="@dimen/layout_margin"
         android:layout_marginTop="15dp"
         android:hint="@string/whats_your_next_task"
-        app:layout_constraintStart_toStartOf="@id/title"
         app:errorEnabled="true"
+        app:layout_constraintStart_toStartOf="@id/title"
         app:layout_constraintTop_toBottomOf="@id/title">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -58,7 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/layout_margin"
+        android:backgroundTint="?attr/colorSurfaceContainerLow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/task_description_til" />
+        app:layout_constraintTop_toBottomOf="@id/task_description_til"
+        tools:text="Add Task" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
