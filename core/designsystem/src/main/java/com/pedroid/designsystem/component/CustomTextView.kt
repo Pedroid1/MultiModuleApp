@@ -32,7 +32,6 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
         val colorResId = when (textPriority) {
             EnumTextViewPriority.PRIMARY -> com.google.android.material.R.attr.colorOnBackground
             EnumTextViewPriority.SECONDARY -> null // Secondary is default text color
-            EnumTextViewPriority.TERTIARY -> com.google.android.material.R.attr.colorOnSurfaceVariant
         }
         colorResId?.let { setTextColor(MaterialColors.getColor(this, colorResId)) }
     }
@@ -43,9 +42,9 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
 
     private fun setTextType(type: EnumTextType) {
         val fontResId = when (type) {
-            EnumTextType.TITLE1, EnumTextType.TITLE2, EnumTextType.TITLE3 -> R.font.poppins_semibold
-            EnumTextType.SUBTITLE1, EnumTextType.SUBTITLE2 -> R.font.poppins_medium
-            else -> R.font.poppins_regular
+            EnumTextType.TITLE1, EnumTextType.TITLE2, EnumTextType.TITLE3 -> R.font.montserrat_semibold
+            EnumTextType.SUBTITLE1, EnumTextType.SUBTITLE2 -> R.font.montserrat_medium
+            else -> R.font.montserrat_regular
         }
         val textSizeSp = when (type) {
             EnumTextType.TITLE1 -> 20f
@@ -80,8 +79,7 @@ class CustomTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(
 
     enum class EnumTextViewPriority {
         PRIMARY,
-        SECONDARY,
-        TERTIARY;
+        SECONDARY;
 
         companion object {
             fun getTextPriority(index: Int): EnumTextViewPriority {
