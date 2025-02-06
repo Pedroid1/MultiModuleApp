@@ -24,7 +24,7 @@
         android:text="@string/have_a_good_day"
         app:layout_constraintStart_toStartOf="@id/hi_txt"
         app:layout_constraintTop_toBottomOf="@id/hi_txt"
-        app:textPriority="tertiary"
+        app:textPriority="secondary"
         app:textType="subtitle1" />
 
     <com.pedroid.designsystem.component.CustomTextView
